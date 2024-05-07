@@ -1,1 +1,1 @@
-# Lord-of-the-Rings
+# Lord of the Rings
