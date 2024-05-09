@@ -6,21 +6,18 @@ abstract class Beast extends Character{
         super(name, hp, resistance);
     }
 
+
     @Override
-    int attack(Character attacker, Character defensor) {
-        int attackValue = dice.throwDice(attacker, 1);
-        System.out.println("dice: " + attackValue);
+    int[] attack(Character defensor) {
+        int[] stats = new int[2];
+        int attackValue = dice.throwDice(this, 1);
         int resistance = evaluate(defensor.getResistance(), (Hero) defensor);
         defensor.setResistance(resistance); // verificar melhor quando se implementar turnos
-        System.out.println("My attack is: " + attackValue);
-        System.out.println("My opponent resistance is: " + resistance);
         int damage = attackValue - resistance;
-        if(damage>0) {
-            System.out.println("Damage: " + damage);
-            defensor.setHp(defensor.getHp() - damage);
-        }
-        else System.out.println("No damage");
-        return damage;
+        if(damage>0) defensor.setHp(defensor.getHp() - damage);
+        else damage = 0;
+        stats[0] = attackValue; stats[1] = damage;
+        return stats;
     }
 
     abstract int evaluate(int resistance, Hero enemy);

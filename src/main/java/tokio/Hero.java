@@ -2,26 +2,28 @@ package tokio;
 
 abstract class Hero extends Character {
     Dice dices = new Dice();
+    private int originalResistance;
 
     public Hero(String name, int hp, int resistance) {
         super(name, hp, resistance);
+        originalResistance = resistance;
     }
 
     @Override
-    int attack(Character attacker, Character defensor) {
-        int attackValue = dices.throwDice(attacker, 2);
-        System.out.println("dice: " + attackValue);
+    int[] attack(Character defensor) {
+        int[] stats = new int[2];
+        int attackValue = dices.throwDice(this, 2);
         attackValue = evaluate(attackValue, (Beast) defensor);
-        System.out.println("My attack is: " + attackValue);
-        System.out.println("My opponent resistance is: " + defensor.getResistance());
         int damage = attackValue - defensor.getResistance();
-        if(damage>0) {
-            System.out.println("Damage: " + damage);
-            defensor.setHp(defensor.getHp() - damage);
-        }
-        else System.out.println("No damage");
-        return damage;
+        if(damage>0) defensor.setHp(defensor.getHp() - damage);
+        else damage = 0;
+        stats[0] = attackValue; stats[1] = damage;
+        return stats;
     }
 
     abstract int evaluate(int attackValue, Beast enemy);
+
+    public int getOriginalResistance() {
+        return originalResistance;
+    }
 }

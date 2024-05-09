@@ -11,7 +11,7 @@ abstract class Character {
         this.resistance = resistance;
     }
 
-    abstract int attack(Character attacker, Character defensor);
+    abstract int[] attack(Character defensor);
 
     public String getName() {
         return name;

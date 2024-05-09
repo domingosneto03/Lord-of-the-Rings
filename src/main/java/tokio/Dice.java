@@ -9,14 +9,8 @@ public class Dice {
         int maxValue = Integer.MIN_VALUE;
         while(count>0) {
             int diceValue;
-            if(character instanceof Hero) {
-                if(count>1) System.out.println("I am a hero");
-                diceValue = random.nextInt(101); // random number between 0 and 100
-            }
-            else {
-                System.out.println("I am a beast");
-                diceValue = random.nextInt(91); // random number between 0 and 90
-            }
+            if(character instanceof Hero) diceValue = random.nextInt(101); // random number between 0 and 100
+            else diceValue = random.nextInt(91); // random number between 0 and 90
             maxValue = Math.max(diceValue, maxValue);
             count--;
         }

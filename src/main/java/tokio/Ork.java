@@ -8,7 +8,6 @@ public class Ork extends Beast {
 
     @Override
     int evaluate(int resistance, Hero enemy) {
-        System.out.println("the ork has an immense force");
         resistance -= 0.10 * resistance; // armadura reduz 10%
         return resistance;
     }

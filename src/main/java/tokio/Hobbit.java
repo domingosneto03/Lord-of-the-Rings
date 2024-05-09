@@ -8,10 +8,7 @@ public class Hobbit extends Hero {
 
     @Override
     int evaluate(int attackValue, Beast enemy) {
-        if(enemy instanceof Troll) {
-            System.out.println("the hobbit found an troll");
-            attackValue -= 5; // potência ofensiva diminui 5 unidades
-        }
+        if(enemy instanceof Troll) attackValue -= 5; // potência ofensiva diminui 5 unidades
         return attackValue;
     }
 }

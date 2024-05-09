@@ -8,10 +8,7 @@ public class Elf extends Hero {
 
     @Override
     int evaluate(int attackValue, Beast enemy) {
-        if(enemy instanceof Ork) {
-            System.out.println("the elf found an ork");
-            attackValue += 10; // potência ofensiva aumenta 10 unidades
-        }
+        if(enemy instanceof Ork) attackValue += 10; // potência ofensiva aumenta 10 unidades
         return attackValue;
     }
 }
