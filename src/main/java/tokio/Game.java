@@ -38,16 +38,18 @@ public class Game {
 
     public void startFight() {
         int position = 0;
+        int fightLength = Math.min(board.getHeroList().size(), board.getBeastList().size());
         System.out.println("Turno 1:");
-        while(!board.getHeroList().isEmpty() || !board.getBeastList().isEmpty()) {
-            int fightLength = Math.min(board.getHeroList().size(), board.getBeastList().size());
+        while(!board.getHeroList().isEmpty()  && !board.getBeastList().isEmpty()) {
             var hero = board.getHeroList().get(position);
             var beast = board.getBeastList().get(position);
             System.out.println("\tLuta entre " + hero.getName() + " (Vida=" + hero.getHp() + " Armadura=" + hero.getResistance() + ") e " + beast.getName() + " (Vida=" + beast.getHp() + " Armadura=" + beast.getResistance() + ")");
+
             int[] heroAttack = hero.attack(beast);
             System.out.println("\t\t" + hero.getName() + " saca " + heroAttack[0] + " e tira " + heroAttack[1] + " de vida a " + beast.getName());
             int[] beastAttack = beast.attack(hero);
             System.out.println("\t\t" + beast.getName() + " saca " + beastAttack[0] + " e tira " + beastAttack[1] + " de vida a " + hero.getName());
+
             if(isDead(hero)) {
                 board.removeDead(hero, position);
                 fightLength = Math.min(board.getHeroList().size(), board.getBeastList().size());
@@ -56,7 +58,9 @@ public class Game {
                 board.removeDead(beast, position);
                 fightLength = Math.min(board.getHeroList().size(), board.getBeastList().size());
             }
-            if(position == fightLength - 1) {
+
+            if(fightLength == 0) break;
+            else if(position >= fightLength - 1) {
                 turn++;
                 position = 0;
                 for(var x : board.getHeroList()) x.setResistance(x.getOriginalResistance());
