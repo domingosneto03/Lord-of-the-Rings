@@ -97,7 +97,8 @@ Subclass of `Beast`. Trolls have no special modifiers for attack or resistance.
    java tokio.Main
    ```
 5. **Observe the battle**: The console will display each turn of the battle, showing the actions and outcomes for each character.
-     ![Screenshot 1](docs/battle.gif)
+
+   ![Screenshot 1](docs/battle.gif)
 
 ## Future Enhancements
 - **Interactive Mode**: Allow users to interact with the game by making decisions for the characters.
