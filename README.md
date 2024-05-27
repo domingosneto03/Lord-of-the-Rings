@@ -1,5 +1,8 @@
 # Lord of the Rings
 
+![Java](https://img.shields.io/badge/java-16-brightgreen?logo=java&logoColor=white)
+![Gradle](https://img.shields.io/badge/gradle-5.8.1-yellowgreen?logo=gradle&logoColor=white)
+
 ## Overview
 
 This project simulates a battle between two armies from the Lord of the Rings universe: Heroes and Beasts. The objective is to simulate a turn-based combat until one of the armies emerges victorious. The simulation runs in the console and displays the progress and results of each battle.
