@@ -96,7 +96,7 @@ Subclass of `Beast`. Trolls have no special modifiers for attack or resistance.
 5. **Observe the battle**: The console will display each turn of the battle, showing the actions and outcomes for each character.
 
 ## Future Enhancements
-**Interactive Mode**: Allow users to interact with the game by making decisions for the characters.
-**Graphical User Interface (GUI)**: Create a GUI to visualize the battle with JavaFX instead of using the console.
-**Additional Characters and Abilities**: Introduce more characters and unique abilities to increase the complexity and fun of the game.
+- **Interactive Mode**: Allow users to interact with the game by making decisions for the characters.
+- **Graphical User Interface (GUI)**: Create a GUI to visualize the battle with JavaFX instead of using the console.
+- **Additional Characters and Abilities**: Introduce more characters and unique abilities to increase the complexity and fun of the game.
    
