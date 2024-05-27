@@ -1,6 +1,6 @@
 # Lord of the Rings
 
-![Java](https://img.shields.io/badge/java-16-brightgreen?logo=java&logoColor=white)
+![Java](https://img.shields.io/badge/java-16.0-brightgreen?logo=java&logoColor=white)
 ![Gradle](https://img.shields.io/badge/gradle-5.8.1-yellowgreen?logo=gradle&logoColor=white)
 
 ## Overview
@@ -23,7 +23,7 @@ This project simulates a battle between two armies from the Lord of the Rings un
   - *Beasts*: Ork, Troll
 - **Randomized Attacks**: Attack power is determined by rolling dice.
 - **Special Abilities**: Characters have specific strengths and weaknesses against certain opponents.
-- **Dynamic Battle Display**: The console shows detailed information about each battle turn.
+- **Dynamic Battle Display**: In the console, each turn of the battle is displayed with a cooldown between actions to create a more immersive experience. This cooldown introduces a delay between each action printout, providing the sensation of following the battle in real-time.
 
 ## Project Structure
 
