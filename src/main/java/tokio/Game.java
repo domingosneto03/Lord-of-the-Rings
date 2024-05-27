@@ -5,11 +5,12 @@ public class Game {
     private Board board;
 
     public Game() {
-        this.turn = 1;
+        this.turn = 1; // jogo começa com a vez dos heróis
         this.board = new Board();
         initGame();
     }
 
+    // grande parte dos valores copiados do enunciado
     private void initGame() {
         // heroes
         Elf legolas = new Elf("Legolas", 150, 30);
@@ -38,8 +39,9 @@ public class Game {
 
     public void startFight() {
         int position = 0;
-        int fightLength = Math.min(board.getHeroList().size(), board.getBeastList().size());
+        int fightLength = Math.min(board.getHeroList().size(), board.getBeastList().size()); // define as personagens que ficam em lista de espera para lutar
         System.out.println("Turno 1:");
+        // partida acaba quando um tipo de personagem for completamente derrotado
         while(!board.getHeroList().isEmpty()  && !board.getBeastList().isEmpty()) {
             var hero = board.getHeroList().get(position);
             var beast = board.getBeastList().get(position);
@@ -72,6 +74,7 @@ public class Game {
         System.out.println("VITORIA " + winners + "!!");
     }
 
+    // método que verifica se a personagem morreu
     private boolean isDead(Character character) {
         String race = character.getClass().toString();
         race = race.substring(race.lastIndexOf('.') + 1);
