@@ -3,6 +3,7 @@ package tokio;
 public class Game {
     private int turn;
     private Board board;
+    private static final int ACTION_DELAY_MS = 700;
 
     public Game() {
         this.turn = 1; // jogo começa com a vez dos heróis
@@ -41,16 +42,20 @@ public class Game {
         int position = 0;
         int fightLength = Math.min(board.getHeroList().size(), board.getBeastList().size()); // define as personagens que ficam em lista de espera para lutar
         System.out.println("Turno 1:");
+        pause(ACTION_DELAY_MS);
         // partida acaba quando um tipo de personagem for completamente derrotado
         while(!board.getHeroList().isEmpty()  && !board.getBeastList().isEmpty()) {
             var hero = board.getHeroList().get(position);
             var beast = board.getBeastList().get(position);
             System.out.println("\tLuta entre " + hero.getName() + " (Vida=" + hero.getHp() + " Armadura=" + hero.getResistance() + ") e " + beast.getName() + " (Vida=" + beast.getHp() + " Armadura=" + beast.getResistance() + ")");
+            pause(ACTION_DELAY_MS);
 
             int[] heroAttack = hero.attack(beast);
             System.out.println("\t\t" + hero.getName() + " saca " + heroAttack[0] + " e tira " + heroAttack[1] + " de vida a " + beast.getName());
+            pause(ACTION_DELAY_MS);
             int[] beastAttack = beast.attack(hero);
             System.out.println("\t\t" + beast.getName() + " saca " + beastAttack[0] + " e tira " + beastAttack[1] + " de vida a " + hero.getName());
+            pause(ACTION_DELAY_MS);
 
             if(isDead(hero)) {
                 board.removeDead(hero, position);
@@ -67,6 +72,7 @@ public class Game {
                 position = 0;
                 for(var x : board.getHeroList()) x.setResistance(x.getOriginalResistance());
                 System.out.println("Turno " + turn + ":");
+                pause(ACTION_DELAY_MS);
             }
             else position++;
         }
@@ -80,8 +86,18 @@ public class Game {
         race = race.substring(race.lastIndexOf('.') + 1);
         if(character.getHp() <= 0) {
             System.out.println("\tMorre o " + race + " " + character.getName() + "!");
+            pause(ACTION_DELAY_MS);
             return true;
         }
         return false;
+    }
+
+    // method to pause the execution for a specified time
+    private void pause(int milliseconds) {
+        try {
+            Thread.sleep(milliseconds);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
